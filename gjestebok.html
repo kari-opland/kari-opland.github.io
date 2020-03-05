@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    </head>
+<body>
+    <form>
+    <h1>Gjestebok</h1>
+    <p>Skriv inn navnet ditt og en hilsen.</p>
+    <p>
+<input id="txtNavn" type="text" placeholder="Navn">
+        </p>
+    
+        <p>
+        <input id="txtMelding" type="text" placeholder="Melding">
+        </p>
+        
+        <p>
+        <input id="btnSendInn" type="button" onclick="submit_data()" value="Send inn">
+        </p>
+    </form>
+    
+    <div id="gjestebok">{melding}</div>
+    
+    <style>
+        body{
+            text-align: center;
+            
+        }
+    
+    
+    </style>
+    
+<script> 
+/*     let txtNavn = document.querySelector("#txtNavn")
+    let txtMelding = document.querySelector("#txtMelding")
+    let gjestebok = document.querySelector("#gjestebok")
+    let teller = 0
+    
+    function sendInn(){
+        let navn = txtNavn.value;
+        let melding = txtMelding.value;
+        teller ++
+      
+    
+    }
+    
+    gjestebok.innerHTML += `<div>${teller}. ${navn} <br> ${melding}</div>`
+     */   
+    </script>
+   
+      
+<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-database.js"></script>
+
+
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyCHSqIoD1mhPPDv5WKcTfNEqmqew3gOkwo",
+    authDomain: "kari-843ad.firebaseapp.com",
+    databaseURL: "https://kari-843ad.firebaseio.com",
+    projectId: "kari-843ad",
+    storageBucket: "kari-843ad.appspot.com",
+    messagingSenderId: "414494081913",
+    appId: "1:414494081913:web:d0d32455e17775f9fee5a8"
+  };
+  
+  firebase.initializeApp(firebaseConfig);
+
+        
+
+    let db = firebase.database();
+    let gjestebok = db.ref("gjestebok");
+    
+    function submit_data(){
+        var navn_in = document.getElementById("txtNavn").value;
+        var melding_in = document.getElementById("txtMelding").value;
+        
+       let new_object = gjestebok.child(navn_in);
+        
+        new_object.set(
+            {
+            navn : navn_in,
+            melding : melding_in
+        });
+              
+    }
+    
+    </script>
+ 
+    </body>
+</html>
